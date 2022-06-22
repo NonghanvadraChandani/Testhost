@@ -6,8 +6,8 @@ var router = require('./route');
 mongoose.connect("mongodb+srv://chandani:C3214051@cluster0.rxlk5we.mongodb.net/Movies?retryWrites=true&w=majority").then(() => {
     var app = express();
 
-    //app.use(express.json())
-    // app.use(bodyparser.urlencoded({ extended: false }))
+    app.use(express.json())
+    app.use(bodyparser.urlencoded({ extended: false }))
 
     app.use('/api', router);
 
