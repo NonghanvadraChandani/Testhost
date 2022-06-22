@@ -3,9 +3,13 @@ var express = require('express');
 var bodyparser = require('body-parser');
 var router = require('./route');
 
-var app = express();
-app.use('/api', router);
+mongoose.connect("mongodb+srv://chandani:C3214051@cluster0.rxlk5we.mongodb.net/Movies?retryWrites=true&w=majority").then(() => {
+    var app = express();
+    app.use('/api', router);
 
-app.listen(process.env.PORT, () => {
-    console.log("server started");
+    app.listen(process.env.PORT || 3000, () => {
+        console.log("server started");
+    })
+}).catch((err) => {
+    console.log(err);
 })
